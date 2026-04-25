@@ -3,8 +3,8 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import "./index.css";
 import App from "./App";
-import CustomerList from "./components/CustomerList";
-import TrainingList from "./components/TrainingList";
+import CustomerList from "./components/customers/CustomerList";
+import TrainingList from "./components/trainings/TrainingList";
 
 // Define all routes here in one place as objects
 const router = createBrowserRouter([

@@ -12,3 +12,22 @@ export const fetchTrainings = (): Promise<TrainingWithCustomer[]> =>
     return res.json();
     // not wrapped in _embedded, returns a plain array directly
   });
+
+export const addTraining = (training: {
+  date: string;
+  duration: number;
+  activity: string;
+  customer: string; // customer self href URL
+}): Promise<void> =>
+  fetch(`${BASE_URL}/trainings`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(training),
+  }).then((res) => {
+    if (!res.ok) throw new Error("Failed to add training");
+  });
+
+export const deleteTraining = (id: number): Promise<void> =>
+  fetch(`${BASE_URL}/trainings/${id}`, { method: "DELETE" }).then((res) => {
+    if (!res.ok) throw new Error("Failed to delete training");
+  });

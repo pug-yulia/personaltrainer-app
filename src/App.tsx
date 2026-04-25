@@ -22,9 +22,7 @@ export default function App() {
         </Toolbar>
       </AppBar>
 
-      <Container sx={{ mt: 4 }}>
-        {/* Outlet is a placeholder, router replaces it with
-        what route matches the current url */}
+      <Container maxWidth={false} sx={{ mt: 4, px: 3 }}>
         <Outlet />
       </Container>
     </>
