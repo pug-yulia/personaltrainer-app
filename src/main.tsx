@@ -8,26 +8,31 @@ import TrainingList from "./components/trainings/TrainingList";
 import CalendarPage from "./components/calendar/CalendarPage";
 
 // Define all routes here in one place as objects
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <App />,
+      children: [
+        {
+          index: true,
+          element: <CustomerList />,
+        },
+        {
+          path: "trainings",
+          element: <TrainingList />,
+        },
+        {
+          path: "calendar",
+          element: <CalendarPage />,
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        index: true,
-        element: <CustomerList />,
-      },
-      {
-        path: "trainings",
-        element: <TrainingList />,
-      },
-      {
-        path: "calendar",
-        element: <CalendarPage />,
-      },
-    ],
+    basename: import.meta.env.BASE_URL,
   },
-]);
+);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
