@@ -5,6 +5,7 @@ import "./index.css";
 import App from "./App";
 import CustomerList from "./components/customers/CustomerList";
 import TrainingList from "./components/trainings/TrainingList";
+import CalendarPage from "./components/calendar/CalendarPage";
 
 // Define all routes here in one place as objects
 const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "trainings",
         element: <TrainingList />,
+      },
+      {
+        path: "calendar",
+        element: <CalendarPage />,
       },
     ],
   },

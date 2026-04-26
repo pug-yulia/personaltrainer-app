@@ -13,6 +13,7 @@ import AddCustomer from "./AddCustomer";
 import EditCustomer from "./EditCustomer";
 import ConfirmDialog from "../ConfirmDialog";
 import AddTraining from "../trainings/AddTraining";
+import { CSVLink } from "react-csv";
 
 export default function CustomerList() {
   const [customers, setCustomers] = useState<Customer[]>([]);
@@ -80,6 +81,19 @@ export default function CustomerList() {
       .catch((err) => console.error(err));
   };
 
+  // https://www.npmjs.com/package/react-csv
+  const csvData = customers.map(
+    ({ firstname, lastname, streetaddress, postcode, city, email, phone }) => ({
+      firstname,
+      lastname,
+      streetaddress,
+      postcode,
+      city,
+      email,
+      phone,
+    }),
+  );
+
   return (
     <>
       <Stack
@@ -87,7 +101,12 @@ export default function CustomerList() {
         sx={{ justifyContent: "space-between", alignItems: "center", mb: 2 }}
       >
         <Typography variant="h5">Customers</Typography>
-        <AddCustomer onCustomerAdded={getCustomers} />
+        <Stack direction="row" sx={{ gap: 1 }}>
+          <CSVLink data={csvData} filename="customers.csv">
+            <Button variant="outlined">Export CSV</Button>
+          </CSVLink>
+          <AddCustomer onCustomerAdded={getCustomers} />
+        </Stack>
       </Stack>
 
       <div style={{ height: 600, width: "100%", overflowX: "auto" }}>
