@@ -22,6 +22,9 @@ export default function App() {
           <Button color="inherit" component={NavLink} to="/calendar">
             Calendar
           </Button>
+          <Button color="inherit" component={NavLink} to="/stats">
+            Statistics
+          </Button>
         </Toolbar>
       </AppBar>
 

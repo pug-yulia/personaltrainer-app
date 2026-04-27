@@ -6,6 +6,7 @@ import App from "./App";
 import CustomerList from "./components/customers/CustomerList";
 import TrainingList from "./components/trainings/TrainingList";
 import CalendarPage from "./components/calendar/CalendarPage";
+import StatsPage from "./components/stats/StatsPage";
 
 // Define all routes here in one place as objects
 const router = createBrowserRouter(
@@ -25,6 +26,10 @@ const router = createBrowserRouter(
         {
           path: "calendar",
           element: <CalendarPage />,
+        },
+        {
+          path: "stats",
+          element: <StatsPage />,
         },
       ],
     },
